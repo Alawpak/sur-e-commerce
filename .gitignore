@@ -1,0 +1,15 @@
+node_modules
+.env
+.env.local
+.env.production
+dist
+.astro
+.DS_Store
+*.tsbuildinfo
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.vscode/*
+!.vscode/extensions.json
+.idea
