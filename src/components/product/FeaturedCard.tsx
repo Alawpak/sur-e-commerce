@@ -20,8 +20,11 @@ export function FeaturedCard({ product }: FeaturedCardProps) {
   const [src, setSrc] = useState<string | null>(initialSrc);
 
   return (
-    <div className="group relative block w-[88vw] shrink-0 select-none sm:w-[58vw] lg:w-[42vw] xl:w-[30vw]">
-      {/* Product image — not clickable, just draggable surface */}
+    <Link
+      href={`/product/${product.slug}`}
+      className="group block w-[88vw] shrink-0 select-none sm:w-[58vw] lg:w-[42vw] xl:w-[30vw]"
+    >
+      {/* Product image */}
       <div className="relative aspect-[4/5] w-full overflow-hidden bg-white">
         {src ? (
           // eslint-disable-next-line @next/next/no-img-element
@@ -30,7 +33,7 @@ export function FeaturedCard({ product }: FeaturedCardProps) {
             alt={product.name}
             draggable={false}
             onError={() => setSrc(null)}
-            className="pointer-events-none h-full w-full object-cover"
+            className="pointer-events-none h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]"
           />
         ) : (
           <div className="flex h-full w-full items-center justify-center bg-white">
@@ -39,26 +42,23 @@ export function FeaturedCard({ product }: FeaturedCardProps) {
             </span>
           </div>
         )}
+      </div>
 
-        {/* Hover info panel — the only clickable target */}
-        <Link
-          href={`/product/${product.slug}`}
-          className="absolute inset-x-3 bottom-3 block translate-y-3 bg-white px-4 py-4 opacity-0 shadow-sm transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100"
-        >
+      {/* Caption — always visible, no hover required */}
+      <div className="mt-3 flex items-start justify-between gap-3">
+        <div>
           <p className="text-[13px] font-semibold uppercase tracking-wide text-ink">
             {product.name}
           </p>
-          <p className="mt-0.5 text-[12px] text-muted">({product.sku})</p>
-          <div className="mt-4 flex items-center justify-between">
-            <span className="text-[13px] font-semibold text-ink">
-              {formatPrice(product.price, product.currency)}
-            </span>
-            <span aria-hidden className="text-ink">
-              →
-            </span>
+          <div className="mt-1.5 flex items-center gap-1.5 text-[11px] tracking-ultra text-muted">
+            <span aria-hidden className="h-[5px] w-[5px] rounded-full bg-ink" />
+            {product.category.title.toUpperCase()}
           </div>
-        </Link>
+        </div>
+        <span className="shrink-0 text-[13px] font-semibold text-ink">
+          {formatPrice(product.price, product.currency)}
+        </span>
       </div>
-    </div>
+    </Link>
   );
 }

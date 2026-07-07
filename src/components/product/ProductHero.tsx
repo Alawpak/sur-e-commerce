@@ -4,7 +4,7 @@ const WORDMARK = "SUR STORE";
 
 export function ProductHero() {
   return (
-    <section className="relative flex flex-col px-6 pt-[12vh]">
+    <section className="relative flex flex-col px-6 pt-[9vh]">
       {/* Full-width wordmark with thick underline */}
       <div className="w-full text-center">
         <span
@@ -18,7 +18,7 @@ export function ProductHero() {
       </div>
 
       {/* Brand line: paragraph (left) + website link (right) */}
-      <div className="mt-44 flex flex-col gap-8 md:flex-row md:items-start md:justify-between">
+      <div className="mt-10 flex flex-col gap-8 md:mt-14 md:flex-row md:items-start md:justify-between">
         <p
           className="max-w-2xl font-medium leading-[1.25] tracking-tight text-muted"
           style={{ fontSize: "clamp(1.25rem, 2.2vw, 2rem)" }}

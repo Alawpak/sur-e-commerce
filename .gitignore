@@ -1,9 +1,10 @@
 node_modules
+.next
+out
+next-env.d.ts
 .env
 .env.local
 .env.production
-dist
-.astro
 .DS_Store
 *.tsbuildinfo
 npm-debug.log*

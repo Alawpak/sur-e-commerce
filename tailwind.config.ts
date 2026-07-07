@@ -1,10 +1,7 @@
 import type { Config } from "tailwindcss";
 
 const config: Config = {
-  content: [
-    "./src/app/**/*.{ts,tsx}",
-    "./src/components/**/*.{ts,tsx}",
-  ],
+  content: ["./src/app/**/*.{ts,tsx}", "./src/components/**/*.{ts,tsx}"],
   theme: {
     extend: {
       colors: {
@@ -13,10 +10,16 @@ const config: Config = {
         ink: "#1a0fd4", // primary foreground (text + giant type)
         muted: "#7a72d8", // dimmed labels / secondary meta text
         line: "#c5c0ec", // hairline grid / borders
+        bone: "#f2f1eb", // neutral backdrop (hero v2)
       },
       fontFamily: {
         // Epoch — used for the oversized wordmark and display headings.
-        display: ["var(--font-display)", "ui-sans-serif", "system-ui", "sans-serif"],
+        display: [
+          "var(--font-display)",
+          "ui-sans-serif",
+          "system-ui",
+          "sans-serif",
+        ],
         // Codec Cold — default body / UI text.
         body: ["var(--font-body)", "ui-sans-serif", "system-ui", "sans-serif"],
         // Codec Warm — available for accents.

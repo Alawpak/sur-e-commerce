@@ -7,7 +7,7 @@ interface FeaturedProductsProps {
 
 export function FeaturedProducts({ products }: FeaturedProductsProps) {
   return (
-    <section className="pb-24 pt-24">
+    <section>
       <div className="mb-8 text-center">
         <span className="text-[11px] tracking-ultra text-muted">
           ( FEATURED PRODUCTS )

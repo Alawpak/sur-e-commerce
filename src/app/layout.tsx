@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { codecCold, codecWarm, epoch } from "./fonts";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+import { PageBody } from "@/components/layout/PageBody";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -21,7 +22,7 @@ export default function RootLayout({
     >
       <body>
         <Header />
-        <div className="pt-16">{children}</div>
+        <PageBody>{children}</PageBody>
         <Footer />
       </body>
     </html>
