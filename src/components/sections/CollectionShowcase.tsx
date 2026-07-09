@@ -28,7 +28,7 @@ interface CollectionShowcaseProps {
 
 export function CollectionShowcase({ products }: CollectionShowcaseProps) {
   const [hero, ...rest] = products;
-  const gridProducts = rest.slice(0, 2);
+  const gridProducts = [rest[9], rest[10]];
 
   if (!hero || gridProducts.length === 0) return null;
 

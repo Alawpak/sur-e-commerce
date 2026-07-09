@@ -43,7 +43,7 @@ export function ProductHeroV2() {
         aria-hidden
       >
         <span
-          className="whitespace-nowrap font-display font-black leading-none tracking-tighter text-ink/[0.06] lg:-ml-4"
+          className="whitespace-nowrap font-display font-black leading-none tracking-tighter text-ink/[0.30] lg:-ml-4"
           style={{ fontSize: "clamp(10rem, 34vw, 30rem)" }}
         >
           SUR

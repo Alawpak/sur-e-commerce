@@ -2,6 +2,7 @@ import { ProductHero } from "@/components/product/ProductHero";
 import { ProductHeroV2 } from "@/components/product/ProductHeroV2";
 import { BrandFilm } from "@/components/sections/BrandFilm";
 import { CollectionShowcase } from "@/components/sections/CollectionShowcase";
+import { ExploreLinks } from "@/components/sections/ExploreLinks";
 import { FeaturedProducts } from "@/components/sections/FeaturedProducts";
 import { getAllProducts } from "@/lib/products";
 import { HOMEPAGE_HERO } from "@/config/homepage";
@@ -17,6 +18,7 @@ export default async function HomePage() {
   return (
     <main className={`flex flex-col ${SECTION_GAP}`}>
       {HOMEPAGE_HERO === "v2" ? <ProductHeroV2 /> : <ProductHero />}
+      <ExploreLinks products={products} />
       <CollectionShowcase products={products} />
       <FeaturedProducts products={products} />
       <BrandFilm />
