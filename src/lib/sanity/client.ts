@@ -15,6 +15,9 @@ export const sanityClient = isSanityConfigured
       projectId,
       dataset,
       apiVersion,
-      useCdn: true,
+      // The CDN is cached (can lag behind a fresh publish by a bit) — great
+      // for production traffic, confusing while you're actively editing
+      // content in the Studio. Use the live, uncached API in development.
+      useCdn: process.env.NODE_ENV === "production",
     })
   : null;

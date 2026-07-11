@@ -2,13 +2,13 @@ import type { Product } from "@/types/product";
 import {
   getFeaturedProduct as getMockFeatured,
   getProductBySlug as getMockBySlug,
-  getRelatedProducts as getMockRelated,
   products as mockProducts,
 } from "@/data/mock-products";
 import { isSanityConfigured, sanityClient } from "@/lib/sanity/client";
 import {
   allProductsQuery,
   featuredProductQuery,
+  featuredRelatedProductsQuery,
   productBySlugQuery,
 } from "@/lib/sanity/queries";
 
@@ -48,6 +48,13 @@ export async function getRelatedProducts(
   slug: string,
   limit = 4
 ): Promise<Product[]> {
-  // Mock-only for now; with Sanity you'd query by category.
-  return getMockRelated(slug, limit);
+  // Featured products from Sanity, excluding the one being viewed. No mock
+  // fallback here — until Sanity is configured (or nothing is marked
+  // featured), this section is simply empty.
+  if (!isSanityConfigured || !sanityClient) return [];
+  const products = await sanityClient.fetch<Product[]>(
+    featuredRelatedProductsQuery,
+    { slug, limit }
+  );
+  return products ?? [];
 }

@@ -55,10 +55,13 @@ const product = {
       },
     },
     {
-      name: "image",
-      title: "Image",
-      type: "image",
-      options: { hotspot: true },
+      name: "images",
+      title: "Images",
+      type: "array",
+      of: [{ type: "image", options: { hotspot: true } }],
+      description:
+        "Upload every photo for this product here, in order — drag to reorder. The FIRST image is used as the card thumbnail everywhere else on the site; all of them show, in order, on the product detail page.",
+      validation: (Rule: any) => Rule.required().min(1),
     },
     {
       name: "category",

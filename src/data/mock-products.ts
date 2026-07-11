@@ -237,10 +237,6 @@ export function getFeaturedProduct(): Product {
   return products[0];
 }
 
-export function getRelatedProducts(slug: string, limit = 4): Product[] {
-  return products.filter((p) => p.slug !== slug).slice(0, limit);
-}
-
 export function getProductBySlug(slug: string): Product | undefined {
   return products.find((product) => product.slug === slug);
 }
