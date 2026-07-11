@@ -28,7 +28,10 @@ interface CollectionShowcaseProps {
 
 export function CollectionShowcase({ products }: CollectionShowcaseProps) {
   const [hero, ...rest] = products;
-  const gridProducts = [rest[9], rest[10]];
+  // .filter(Boolean) guards against a catalog smaller than expected (fixed
+  // indices here would silently produce `undefined` entries and crash the
+  // .map below instead of just showing fewer tiles).
+  const gridProducts = rest.slice(0, 2).filter(Boolean);
 
   if (!hero || gridProducts.length === 0) return null;
 

@@ -21,6 +21,11 @@ interface CartState {
   removeItem: (lineId: string) => void;
   updateQuantity: (lineId: string, quantity: number) => void;
   clearCart: () => void;
+  /** Drives the cart sidebar (see CartDrawer) — not persisted, always closed on load. */
+  isOpen: boolean;
+  openCart: () => void;
+  closeCart: () => void;
+  toggleCart: () => void;
 }
 
 function makeLineId(productId: string, size: Size): string {
@@ -76,8 +81,17 @@ export const useCartStore = create<CartState>()(
         })),
 
       clearCart: () => set({ items: [] }),
+
+      isOpen: false,
+      openCart: () => set({ isOpen: true }),
+      closeCart: () => set({ isOpen: false }),
+      toggleCart: () => set((state) => ({ isOpen: !state.isOpen })),
     }),
-    { name: "surcycle-cart" }
+    {
+      name: "surcycle-cart",
+      // Only persist cart contents — the drawer should always start closed.
+      partialize: (state) => ({ items: state.items }),
+    }
   )
 );
 

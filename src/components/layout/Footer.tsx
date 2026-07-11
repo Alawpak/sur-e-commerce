@@ -55,8 +55,6 @@ export function Footer() {
           </p>
           <span className="font-semibold text-muted md:text-right">MÉXICO</span>
         </div>
-
-        <SurLogo className="mx-auto mt-14 w-12 text-ink" />
       </div>
 
       {/* ── Lower band: link columns ──────────────────────────── */}

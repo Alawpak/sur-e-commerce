@@ -11,11 +11,13 @@ interface AddToCartButtonProps {
 
 export function AddToCartButton({ product, size }: AddToCartButtonProps) {
   const addItem = useCartStore((state) => state.addItem);
+  const openCart = useCartStore((state) => state.openCart);
   const [justAdded, setJustAdded] = useState(false);
 
   function handleClick() {
     addItem(product, size);
     setJustAdded(true);
+    openCart();
     window.setTimeout(() => setJustAdded(false), 1200);
   }
 
