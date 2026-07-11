@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { ProductGallery } from "@/components/product/ProductGallery";
-import { BuyPanel } from "@/components/product/BuyPanel";
+import { ProductView } from "@/components/product/ProductView";
 import { ShopCard } from "@/components/product/ShopCard";
 import {
   getAllProducts,
@@ -33,14 +32,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
   return (
     <main className="px-6 pb-24 pt-8">
-      {/* Two columns: scrolling gallery (left) + sticky buy panel (right) */}
-      <div className="grid grid-cols-1 gap-10 md:grid-cols-[60fr_40fr] md:gap-16">
-        <ProductGallery product={product} />
-
-        <div className="md:sticky md:top-24 md:h-fit md:self-start md:pt-2">
-          <BuyPanel product={product} />
-        </div>
-      </div>
+      <ProductView product={product} />
 
       {/* Related products */}
       {related.length > 0 && (

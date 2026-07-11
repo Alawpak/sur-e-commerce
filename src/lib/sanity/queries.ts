@@ -19,6 +19,15 @@
 const imageUrlProjection = `images[0].asset->url + "?w=1600&q=80&auto=format"`;
 const galleryProjection = `images[]{ "url": asset->url + "?w=2400&q=85&auto=format" }.url`;
 
+// Colorways — each with its own hex swatch and its own photo set, at the
+// same quality as the main detail gallery (this is what the color swatches
+// swap the gallery to on the product page).
+const colorsProjection = `colors[]{
+    name,
+    hex,
+    "images": images[]{ "url": asset->url + "?w=2400&q=85&auto=format" }.url
+  }`;
+
 export const featuredProductQuery = `
 *[_type == "product" && featured == true][0]{
   "id": _id,
@@ -31,6 +40,7 @@ export const featuredProductQuery = `
   sizes,
   "imageUrl": ${imageUrlProjection},
   "images": ${galleryProjection},
+  "colors": ${colorsProjection},
   category->{
     "id": _id,
     title,
@@ -71,6 +81,7 @@ export const productBySlugQuery = `
   sizes,
   "imageUrl": ${imageUrlProjection},
   "images": ${galleryProjection},
+  "colors": ${colorsProjection},
   category->{
     "id": _id,
     title,

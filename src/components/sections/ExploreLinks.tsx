@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { Product } from "@/types/product";
+import { MEDIA } from "@/lib/cloudinary";
 
 // Three-up navigation shortcut, full page on desktop:
 //   left   — 50% width, 100% height
@@ -11,8 +12,9 @@ import type { Product } from "@/types/product";
 // heights against (h-full, h-[40%], h-[60%]). See CollectionShowcase for
 // the same technique / the bug it was fixing.
 //
-// Uses whatever product photos are already in the catalog as placeholders —
-// swap `imageUrl` per column once there's dedicated story/community imagery.
+// Dedicated brand imagery (Cloudinary — see src/lib/cloudinary.ts), not tied
+// to the product catalog, so this doesn't break/go blank as the catalog
+// grows or shrinks.
 
 interface ExploreColumn {
   label: string;
@@ -64,25 +66,23 @@ function ExploreTile({
 }
 
 export function ExploreLinks({ products }: ExploreLinksProps) {
-  // Indices 3-5 so these don't repeat the photos already used by
-  // CollectionShowcase (which uses products[0..2]).
   const columns: ExploreColumn[] = [
     {
       label: "NUESTROS PRODUCTOS",
       href: "/shop",
-      imageUrl: products[7]?.imageUrl,
+      imageUrl: MEDIA.exploreShop || products[7]?.imageUrl,
       imageAlt: "Nuestros productos",
     },
     {
       label: "NUESTRA HISTORIA",
       href: "/about",
-      imageUrl: products[8]?.imageUrl,
+      imageUrl: MEDIA.exploreStory || products[8]?.imageUrl,
       imageAlt: "Nuestra historia",
     },
     {
       label: "NUESTRA COMUNIDAD",
       href: "https://www.instagram.com/surcycle.mx",
-      imageUrl: products[9]?.imageUrl,
+      imageUrl: MEDIA.exploreCommunity || products[9]?.imageUrl,
       imageAlt: "Nuestra comunidad",
     },
   ];

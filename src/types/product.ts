@@ -8,6 +8,15 @@ export interface Category {
   slug: string;
 }
 
+/** One colorway of a product — its own swatch + its own photo set. Selecting
+ * a swatch on the product page swaps the gallery to that color's images. */
+export interface ProductColor {
+  name: string;
+  /** Hex code, e.g. "#E63946" — pasted in Sanity, used directly as a CSS color. */
+  hex: string;
+  images: string[];
+}
+
 export interface Product {
   id: string;
   /** Catalog index shown as "[ 001 ]" in the UI. */
@@ -30,6 +39,8 @@ export interface Product {
   images?: string[];
   /** Colorway name, e.g. "Cobalt". */
   color?: string;
+  /** Other colorways of the same product, each with its own photos. Omit for single-color products. */
+  colors?: ProductColor[];
   /** Material, e.g. "100% cotton". */
   material?: string;
   /** Free-form spec lines rendered in the corner meta blocks. */

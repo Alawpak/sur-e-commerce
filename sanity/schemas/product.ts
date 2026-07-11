@@ -64,6 +64,48 @@ const product = {
       validation: (Rule: any) => Rule.required().min(1),
     },
     {
+      name: "colors",
+      title: "Colors",
+      type: "array",
+      description:
+        "Optional — add one entry per colorway (e.g. Rojo, Verde). Each has its own hex swatch and its own set of photos. On the product page, clicking a swatch swaps the gallery to that color's photos. Leave empty for a single-color product.",
+      of: [
+        {
+          type: "object",
+          name: "colorVariant",
+          fields: [
+            {
+              name: "name",
+              title: "Color name",
+              type: "string",
+              validation: (Rule: any) => Rule.required(),
+            },
+            {
+              name: "hex",
+              title: "Hex code",
+              type: "string",
+              description:
+                'Paste the hex value, including the "#" — e.g. "#E63946" for red, "#2A9D8F" for green.',
+              validation: (Rule: any) =>
+                Rule.required().regex(/^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$/, {
+                  name: "hex color",
+                }),
+            },
+            {
+              name: "images",
+              title: "Images",
+              type: "array",
+              of: [{ type: "image", options: { hotspot: true } }],
+              validation: (Rule: any) => Rule.required().min(1),
+            },
+          ],
+          preview: {
+            select: { title: "name", subtitle: "hex", media: "images.0" },
+          },
+        },
+      ],
+    },
+    {
       name: "category",
       title: "Category",
       type: "reference",
