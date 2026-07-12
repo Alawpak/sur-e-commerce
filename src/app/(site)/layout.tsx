@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Analytics } from "@vercel/analytics/next";
 import { codecCold, codecWarm, epoch } from "../fonts";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
@@ -34,6 +35,7 @@ export default function RootLayout({
         <Footer />
         <CartDrawer />
         <Preloader imageSrc={MEDIA.loadingImage} videoSrc={MEDIA.brandFilm} />
+        <Analytics />
       </body>
     </html>
   );
