@@ -17,13 +17,13 @@ function formatPrice(price: number, currency: string): string {
 
 function buildWhatsAppMessage(items: CartItem[], subtotal: number): string {
   const currency = items[0]?.currency ?? "EUR";
-  const lines = items.map(
-    (item) =>
-      `- ${item.name} (Talla ${item.size}) x${item.quantity} — ${formatPrice(
-        item.price * item.quantity,
-        item.currency,
-      )}`,
-  );
+  const lines = items.map((item) => {
+    const color = item.color ? `, Color ${item.color}` : "";
+    return `- ${item.name} (Talla ${item.size}${color}) x${item.quantity} — ${formatPrice(
+      item.price * item.quantity,
+      item.currency,
+    )}`;
+  });
 
   return [
     "Hola! Quiero hacer este pedido:",
@@ -117,6 +117,11 @@ export function CartDrawer() {
                     {formatPrice(item.price, item.currency)}
                   </p>
                   <p className="text-[12px] text-muted">Size: {item.size}</p>
+                  {item.color ? (
+                    <p className="text-[12px] text-muted">
+                      Color: {item.color}
+                    </p>
+                  ) : null}
                   <button
                     type="button"
                     onClick={() => removeItem(item.lineId)}

@@ -4,13 +4,15 @@ import type { Product, Size } from "@/types/product";
 
 // A single line in the cart: a product locked to a chosen size + quantity.
 export interface CartItem {
-  /** Unique per product+size combination. */
+  /** Unique per product+size+color combination. */
   lineId: string;
   productId: string;
   name: string;
   price: number;
   currency: string;
   size: Size;
+  /** Selected colorway name, if the product has one (see ProductView). */
+  color?: string;
   imageUrl?: string;
   quantity: number;
 }
@@ -28,8 +30,10 @@ interface CartState {
   toggleCart: () => void;
 }
 
-function makeLineId(productId: string, size: Size): string {
-  return `${productId}__${size}`;
+function makeLineId(productId: string, size: Size, color?: string): string {
+  // Include color so the same product+size in a different colorway gets its
+  // own line instead of silently merging quantities with a different color.
+  return `${productId}__${size}__${color ?? "default"}`;
 }
 
 export const useCartStore = create<CartState>()(
@@ -39,7 +43,7 @@ export const useCartStore = create<CartState>()(
 
       addItem: (product, size, quantity = 1) =>
         set((state) => {
-          const lineId = makeLineId(product.id, size);
+          const lineId = makeLineId(product.id, size, product.color);
           const existing = state.items.find((item) => item.lineId === lineId);
 
           if (existing) {
@@ -59,6 +63,7 @@ export const useCartStore = create<CartState>()(
             price: product.price,
             currency: product.currency,
             size,
+            color: product.color,
             imageUrl: product.imageUrl,
             quantity,
           };
