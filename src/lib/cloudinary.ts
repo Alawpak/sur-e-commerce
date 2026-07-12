@@ -40,11 +40,13 @@ export const MEDIA = {
     "loading-image.jpg",
     "/hero/loading-image.jpg",
   ),
-  shopHero: cloudinaryUrl(
-    "image",
-    "products-hero.jpg",
-    "/hero/products-hero.jpg",
-  ),
+  // No version pinned yet for this one — per the note above, this account
+  // 404s on unpinned URLs, which was leaving the ShopHero section's fallback
+  // background exposed through the transparent header on /shop. Serving the
+  // local file directly until the Cloudinary version number is added (grab
+  // it from "Copy URL" in the Media Library, then swap this back to
+  // cloudinaryUrl("image", "products-hero.jpg", "/hero/products-hero.jpg", <version>)).
+  shopHero: "/hero/products-hero.jpg",
   // Confirmed working with this version pinned.
   brandFilm: cloudinaryUrl("video", "timeline.mp4", "/timeline.mp4", 1783795657),
 

@@ -11,6 +11,11 @@ import "../globals.css";
 export const metadata: Metadata = {
   title: "SURCYCLE — SS/26",
   description: "Engineered apparel for high-output training.",
+  icons: {
+    icon: "/favicon-logo.png",
+    shortcut: "/favicon-logo.png",
+    apple: "/favicon-logo.png",
+  },
 };
 
 export default function RootLayout({

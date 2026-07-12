@@ -10,3 +10,10 @@ body {
 body {
   @apply bg-paper text-ink font-body antialiased;
 }
+
+/* Mobile Chrome/Safari show a default translucent blue overlay on tap for
+   any link/button — very visible on the fixed header's transparent
+   background. Kill it globally. */
+* {
+  -webkit-tap-highlight-color: transparent;
+}

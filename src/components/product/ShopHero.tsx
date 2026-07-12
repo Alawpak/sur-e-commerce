@@ -7,6 +7,13 @@ import { MEDIA } from "@/lib/cloudinary";
 // min-height rather than relying on page padding.
 const HERO_IMAGE = MEDIA.shopHero;
 
+// The source photo is a wide panoramic crop (~1.92:1). With object-fit:
+// cover filling a *tall* box, a narrower viewport forces a much bigger
+// zoom to still cover the full width — that's the "it zooms in more as
+// the screen gets smaller" effect. Scaling the box height down on mobile
+// (and back up from `lg`) keeps the zoom level closer to consistent across
+// breakpoints instead of over-cropping on phones.
+
 interface ShopHeroProps {
   /** Overlay label, bottom-left — e.g. "TODOS" for the full catalog, or a
    * category name like "TOPS" when this is reused for a filtered view. */
@@ -15,7 +22,7 @@ interface ShopHeroProps {
 
 export function ShopHero({ label }: ShopHeroProps) {
   return (
-    <section className="relative h-[70vh] min-h-[420px] w-full overflow-hidden bg-ink sm:h-[70vh]">
+    <section className="relative h-[45vh] min-h-[320px] w-full overflow-hidden bg-transparent sm:h-[55vh] lg:h-[70vh]">
       <Image
         src={HERO_IMAGE}
         alt="SUR STORE — todos los productos"
@@ -23,7 +30,7 @@ export function ShopHero({ label }: ShopHeroProps) {
         priority
         sizes="100vw"
         className="object-cover"
-        style={{ objectPosition: "center calc(50% + 70px)" }}
+        style={{ objectPosition: "center 50%" }}
       />
 
       {/* Darken the bottom edge so the label stays legible over any photo. */}

@@ -80,7 +80,7 @@ export function ProductHeroV2() {
 
       <div className="absolute bottom-8 right-6 z-10 flex max-w-[160px] flex-col gap-3 text-right sm:max-w-xs sm:bottom-10 sm:gap-4 md:max-w-sm">
         <p className="text-[12px] leading-relaxed text-muted sm:text-[13px] md:text-sm">
-          Prendas diseñadas para moverte dentro y fuera del estudio, versátiles,
+          Prendas diseñadas para moverte dentro y fuera del studio, versátiles,
           cómodas y atemporales para llevar el movimiento a donde vayas.
         </p>
       </div>

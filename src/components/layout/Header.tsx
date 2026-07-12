@@ -10,6 +10,9 @@ import { useHasMounted } from "@/hooks/useHasMounted";
 // at the top.
 const HIDE_THRESHOLD = 80;
 
+// Same look everywhere: always transparent, always "ink" (blue) text —
+// matches the homepage hero's header exactly, on every page.
+
 function HamburgerIcon() {
   return (
     <svg
@@ -86,14 +89,12 @@ export function Header() {
   const bagCount = hasMounted ? totalCount : 0;
 
   const [hidden, setHidden] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const lastScrollY = useRef(0);
 
   useEffect(() => {
     const onScroll = () => {
       const current = window.scrollY;
-      setScrolled(current > 4);
 
       if (current > lastScrollY.current && current > HIDE_THRESHOLD) {
         setHidden(true); // scrolling down, past the threshold — hide
@@ -111,9 +112,9 @@ export function Header() {
   return (
     <>
       <header
-        className={`fixed inset-x-0 top-0 z-50 grid grid-cols-3 items-center px-6 py-5 text-[11px] tracking-ultra text-ink  duration-300 lg:flex lg:justify-between ${
+        className={`fixed inset-x-0 top-0 z-50 grid grid-cols-3 items-center px-6 py-5 text-[11px] tracking-ultra bg-transparent text-ink transition-transform duration-300 lg:flex lg:justify-between ${
           hidden ? "-translate-y-full" : "translate-y-0"
-        } ${scrolled ? "bg-paper/70 backdrop-blur-sm" : "bg-transparent"}`}
+        }`}
       >
         {/* Mobile/tablet: hamburger, far left */}
         <button
@@ -160,9 +161,6 @@ export function Header() {
           <button type="button" onClick={openCart} className="hover:opacity-60">
             CARRITO [{bagCount}]
           </button>
-          <Link href="/about" className="hover:opacity-60">
-            LA MARCA
-          </Link>
         </div>
       </header>
 
@@ -175,13 +173,6 @@ export function Header() {
             onClick={() => setMenuOpen(false)}
           >
             TIENDA
-          </Link>
-          <Link
-            href="/about"
-            className="hover:opacity-60"
-            onClick={() => setMenuOpen(false)}
-          >
-            LA MARCA
           </Link>
         </div>
       ) : null}
