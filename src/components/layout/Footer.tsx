@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { SurLogo } from "@/components/brand/SurLogo";
 
@@ -32,8 +33,11 @@ function ColumnLink({ label, href }: { label: string; href: string }) {
 export function Footer() {
   return (
     <footer className="mt-4">
-      {/* ── Upper band: eyebrow + big statement + crest ───────── */}
       <div className="px-6 py-20 text-center">
+        <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-xl bg-ink sm:h-40 sm:w-40">
+          <Image src="/favicon-logo.png" alt="SUR" width={200} height={200} />
+        </div>
+
         <p className="text-[11px] tracking-ultra text-muted">
           SUR — DESIGNED AND MADE LOCALLY
         </p>
@@ -45,7 +49,7 @@ export function Footer() {
             letterSpacing: "3px",
           }}
         >
-          Nacida del movimiento.
+          Nace del movimiento.
           <br />
           Hecha para todos los días.
         </p>
