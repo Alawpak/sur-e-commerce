@@ -35,23 +35,25 @@ export function Footer() {
       {/* ── Upper band: eyebrow + big statement + crest ───────── */}
       <div className="px-6 py-20 text-center">
         <p className="text-[11px] tracking-ultra text-muted">
-          SUR©2026 — DESIGNED AND MADE LOCALLY
+          SUR — DESIGNED AND MADE LOCALLY
         </p>
 
         <p
-          className="mx-auto mt-8 max-w-3xl font-display font-black leading-[1.05] tracking-tight text-ink"
-          style={{ fontSize: "clamp(1.75rem, 5vw, 3.25rem)" }}
+          className="mx-auto mt-8 max-w-3xl font-display font-black leading-[1.05] tracking-tight text-ink "
+          style={{
+            fontSize: "clamp(1.75rem, 5vw, 3.25rem)",
+            letterSpacing: "3px",
+          }}
         >
-          Entrenamos adentro.
+          Nacida del movimiento.
           <br />
-          Vivimos afuera.
+          Hecha para todos los días.
         </p>
 
         <div className="mt-12 grid grid-cols-1 items-center gap-6 text-[11px] tracking-ultra md:grid-cols-3">
           <span className="font-semibold text-muted md:text-left">CHIAPAS</span>
           <p className="mx-auto max-w-md font-semibold leading-relaxed text-muted">
-            LO QUE NOS MUEVE EN EL ESTUDIO LO LLEVAMOS PUESTO TODO EL DÍA. HECHO
-            PARA NOSOTROS. POR NOSOTROS.
+            Prendas con identidad, comodidad y estilo para acompañarte.
           </p>
           <span className="font-semibold text-muted md:text-right">MÉXICO</span>
         </div>
@@ -112,7 +114,7 @@ export function Footer() {
 
         <div className="mt-20 flex items-center justify-between">
           <span className="font-semibold text-ink">
-            ALL RIGHTS RESERVED _ SUR©2026
+            ALL RIGHTS RESERVED SUR
           </span>
           <span className="text-line">SUR STORE</span>
         </div>

@@ -48,14 +48,13 @@ export const MEDIA = {
   // Confirmed working with this version pinned.
   brandFilm: cloudinaryUrl("video", "timeline.mp4", "/timeline.mp4", 1783795657),
 
-  // ExploreLinks (homepage "NUESTROS PRODUCTOS / NUESTRA HISTORIA /
-  // NUESTRA COMUNIDAD" tiles) — dedicated brand imagery, not tied to any
-  // product. No local fallback file exists for these; they show the "?"
-  // placeholder until uploaded. Upload with these exact Public IDs
-  // (Cloudinary strips the extension you type into the Public ID field on
-  // upload — it's added back here at delivery time).
+  // ExploreLinks (homepage "NUESTROS PRODUCTOS / NUESTRA COMUNIDAD" tiles)
+  // — dedicated brand imagery, not tied to any product. No local fallback
+  // file exists for these; they show the "?" placeholder until uploaded.
+  // Upload with these exact Public IDs (Cloudinary strips the extension you
+  // type into the Public ID field on upload — it's added back here at
+  // delivery time).
   exploreShop: cloudinaryUrl("image", "explore-shop.jpg", ""),
-  exploreStory: cloudinaryUrl("image", "explore-story.jpg", ""),
   // Confirmed working with this version pinned.
   exploreCommunity: cloudinaryUrl(
     "image",

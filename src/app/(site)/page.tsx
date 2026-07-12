@@ -18,7 +18,6 @@ export default async function HomePage() {
   return (
     <main className={`flex flex-col ${SECTION_GAP}`}>
       {HOMEPAGE_HERO === "v2" ? <ProductHeroV2 /> : <ProductHero />}
-      <ExploreLinks products={products} />
       <CollectionShowcase products={products} />
       <FeaturedProducts products={products} />
       <BrandFilm />

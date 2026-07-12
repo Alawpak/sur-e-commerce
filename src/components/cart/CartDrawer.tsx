@@ -1,10 +1,14 @@
 "use client";
 
-import { useCartStore, selectSubtotal, type CartItem } from "@/store/cart-store";
+import {
+  useCartStore,
+  selectSubtotal,
+  type CartItem,
+} from "@/store/cart-store";
 import { useHasMounted } from "@/hooks/useHasMounted";
 
 // WhatsApp number that receives orders — country code + number, no "+" or spaces.
-const WHATSAPP_NUMBER = "525578308481";
+const WHATSAPP_NUMBER = "529631208819";
 
 function formatPrice(price: number, currency: string): string {
   const symbol = currency === "EUR" ? "€" : `${currency} `;

@@ -15,8 +15,7 @@ import type { Product } from "@/types/product";
 
 const COLLECTION_NAME = "XOXO SUR";
 const COLLECTION_TAG = "26 COLLECTION";
-const COLLECTION_DESCRIPTION =
-  "La primera colección de SUR: piezas pensadas para entrenar y para todo lo demás. Corte relajado, algodón pesado y detalles que no se notan hasta que los ves de cerca.";
+const COLLECTION_DESCRIPTION = "Diseños originales con la esencia de SUR.";
 
 function formatPrice(price: number, currency: string): string {
   return `${currency} ${price.toFixed(2)}`;

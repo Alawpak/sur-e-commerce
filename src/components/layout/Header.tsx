@@ -111,7 +111,7 @@ export function Header() {
   return (
     <>
       <header
-        className={`fixed inset-x-0 top-0 z-50 grid grid-cols-3 items-center px-6 py-5 text-[11px] tracking-ultra text-ink transition-[transform,background-color] duration-300 lg:flex lg:justify-between ${
+        className={`fixed inset-x-0 top-0 z-50 grid grid-cols-3 items-center px-6 py-5 text-[11px] tracking-ultra text-ink  duration-300 lg:flex lg:justify-between ${
           hidden ? "-translate-y-full" : "translate-y-0"
         } ${scrolled ? "bg-paper/70 backdrop-blur-sm" : "bg-transparent"}`}
       >

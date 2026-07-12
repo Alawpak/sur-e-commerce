@@ -51,7 +51,7 @@ const product = {
       type: "array",
       of: [{ type: "string" }],
       options: {
-        list: ["XS", "S", "M", "L", "XL"],
+        list: ["XS", "S", "M", "L", "XL", "XXL", "UNITALLA"],
       },
     },
     {

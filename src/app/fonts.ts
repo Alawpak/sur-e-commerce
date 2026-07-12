@@ -4,9 +4,16 @@ import localFont from "next/font/local";
 // Each family exposes a CSS variable consumed by Tailwind (see tailwind.config.ts).
 
 // ─── Epoch — display / wordmark ──────────────────────────────
+// NOTE: Epoch's font file maps ñ/Ñ to the same glyph as plain n/N (no
+// tilde) — it has no real accented-character support. Fine for the
+// wordmark/headlines it's meant for, but it was wired to --font-body,
+// which made it the *default body font* for the whole site (see the
+// variable swap fixed below) — that's why "diseñadas" was rendering
+// without a visible tilde everywhere. Codec Cold (the real body font)
+// has a proper ntilde glyph.
 export const epoch = localFont({
   src: [{ path: "./fonts/epoch/Epoch.otf", weight: "400", style: "normal" }],
-  variable: "--font-body",
+  variable: "--font-display",
   display: "swap",
 });
 
